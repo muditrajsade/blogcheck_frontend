@@ -1,0 +1,152 @@
+/* Background and container */
+.user-container {
+  min-height: 100vh;
+  padding: 48px 24px;
+  max-width: 700px;
+  margin: 0 auto;
+  background: linear-gradient(135deg, #0a0a0a, #1a1a1a, #0a0a0a);
+  color: #f0f0f0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Button row */
+.button-row {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  margin-bottom: 48px;
+}
+
+/* Buttons */
+.btn {
+  cursor: pointer;
+  border: none;
+  border-radius: 40px;
+  font-weight: 600;
+  font-size: 16px;
+  padding: 14px 36px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+  transition:
+    background-color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.2s ease;
+}
+
+.btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px #70a1ffaa;
+}
+
+.btn:hover:not(.disabled) {
+  transform: scale(1.05);
+}
+
+/* Blue buttons */
+.btn-blue {
+  background: linear-gradient(90deg, #3a7bd5, #00d2ff);
+  color: white;
+  box-shadow: 0 6px 20px #00aaff88;
+}
+
+.btn-blue:hover:not(.disabled) {
+  background: linear-gradient(90deg, #4a8be6, #00e0ff);
+  box-shadow: 0 8px 25px #00caffbb;
+}
+
+/* Green buttons */
+.btn-green {
+  background: linear-gradient(90deg, #28a745, #7bdb7b);
+  color: white;
+  box-shadow: 0 6px 20px #30c630cc;
+}
+
+.btn-green:hover:not(.disabled) {
+  background: linear-gradient(90deg, #34b849, #87e287);
+  box-shadow: 0 8px 25px #48d848dd;
+}
+
+/* Disabled state */
+.disabled,
+.btn[disabled] {
+  cursor: not-allowed;
+  opacity: 0.5;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* Card container */
+.card {
+  background: white;
+  color: #222;
+  border-radius: 20px;
+  padding: 32px 36px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+  margin-bottom: 40px;
+  user-select: none;
+  transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.25);
+}
+
+/* Card title */
+.card-title {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 28px;
+  color: #0d47a1;
+}
+
+/* Inputs */
+.input-field {
+  width: 100%;
+  padding: 14px 18px;
+  font-size: 15px;
+  border-radius: 12px;
+  border: 2px solid #ccc;
+  margin-bottom: 24px;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  font-family: inherit;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: #3a7bd5;
+  box-shadow: 0 0 8px #3a7bd5aa;
+  background-color: #f9faff;
+  color: #111;
+}
+
+/* Textarea */
+.textarea-field {
+  width: 100%;
+  min-height: 120px;
+  padding: 16px 18px;
+  font-size: 15px;
+  border-radius: 12px;
+  border: 2px solid #ccc;
+  margin-bottom: 32px;
+  resize: vertical;
+  font-family: inherit;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.textarea-field:focus {
+  outline: none;
+  border-color: #3a7bd5;
+  box-shadow: 0 0 8px #3a7bd5aa;
+  background-color: #f9faff;
+  color: #111;
+}
+
+/* Status message */
+.status-msg {
+  font-size: 14px;
+  margin-top: 12px;
+  color: #555;
+  text-align: center;
+  user-select: text;
+}
