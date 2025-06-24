@@ -244,7 +244,7 @@ function User() {
       if (ownsBlog) {
         setStatusMsg("✅ Verified! You are the admin of this blog.");
         setIsVerified(true);
-        const backendResponse = await fetch("http://localhost:8000/rules", {
+        const backendResponse = await fetch("https://blogcheck-backend.vercel.app/rules", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ blogUrl: formattedUrl }),
@@ -266,7 +266,7 @@ function User() {
     if (!isVerified || !rulesText.trim()) return;
 
     try {
-      const response = await fetch("http://localhost:8000/rules_save", {
+      const response = await fetch("https://blogcheck-backend.vercel.app/rules_save", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ blogUrl, rules: rulesText }),
@@ -416,7 +416,7 @@ function User() {
               />
               <button
                 onClick={async () => {
-                  const response = await fetch("http://localhost:8000/moderate", {
+                  const response = await fetch("https://blogcheck-backend.vercel.app/moderate", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ blogUrl: postBlogUrl, title: postTitle, content: postContent }),
