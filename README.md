@@ -1,70 +1,100 @@
-# Getting Started with Create React App
+# 🛡️ BlogCheck
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**BlogCheck** is an AI-powered moderation assistant for Blogger.com authors and admins. It allows blog owners to define content rules in natural language and automatically validates posts submitted by contributors using Google's **Gemini 1.5 Flash** before publishing them to Blogspot.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 🚀 Features
 
-### `npm start`
+### ✅ Rule-Based Moderation
+- Authors define **natural language rules** for their blog (e.g., “No profanity”, “At least 300 words”, “Must contain an image”).
+- These rules are stored per blog and used to assess post quality.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 🔐 Google OAuth Authentication
+- Secure login using Google accounts for both authors and contributors.
+- Ensures only authorized users can submit or manage content.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 🧠 Gemini-Powered Post Evaluation
+- Each submitted post is evaluated by **Gemini 1.5 Flash** based on the defined rules.
+- Returns a strict **`"YES"`** or **`"NO"`** response to determine approval.
 
-### `npm test`
+### ✍️ Post Publishing to Blogger
+- If Gemini returns `"YES"`, the post is published automatically to Blogspot using the Blogger API.
+- If `"NO"`, the post is rejected and feedback is shown to the user.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## 🏗️ Tech Stack
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+| Layer         | Tech                        |
+|--------------|-----------------------------|
+| Frontend     | React.js                    |
+| Backend      | Flask / Node.js             |
+| Authentication | Google OAuth 2.0          |
+| Database     | MongoDB / PostgreSQL        |
+| AI Service   | Gemini 1.5 Flash (LLM)      |
+| Deployment   | Railway / Render / Vercel   |
+| Blog Posting | Blogger Data API v3         |
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 🧭 BlogCheck Workflow
 
-### `npm run eject`
+1. **Author logs in** via Google OAuth.
+2. **Author sets blog-specific rules** in natural language (e.g., "No hate speech", "Post must contain at least 300 words").
+3. **Contributor logs in** using Google OAuth.
+4. **Contributor submits a blog post** through the BlogCheck interface.
+5. **Backend retrieves the stored rules** for the associated blog.
+6. **Post and rules are sent to Gemini 1.5 Flash** for automatic evaluation.
+7. **Gemini responds with a strict `"YES"` or `"NO"`**:
+   - ✅ If `"YES"`:
+     - The post is approved and automatically published to Blogspot using the Blogger API.
+     - The contributor receives confirmation.
+   - ❌ If `"NO"`:
+     - The post is rejected.
+     - The contributor is shown a message indicating the post did not meet the rules and may need revision.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 🔮 Future Prospects
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+While BlogCheck already provides a smart, automated moderation pipeline, there are several directions for future enhancement:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### 1. 🗣️ Multilingual Rule & Post Support
+- Extend rule interpretation and post evaluation to support multiple languages using multilingual LLM capabilities.
+- Useful for global bloggers with diverse audiences.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### 2. 📊 Moderation Dashboard
+- Create an admin dashboard with analytics:
+  - Rule effectiveness.
+  - Post rejection rates.
+  - Contributor performance insights.
 
-## Learn More
+### 3. ✍️ Custom Feedback from Gemini
+- Enhance Gemini responses to include **short, specific rejection reasons** when rules are violated (optional feature).
+- Helps contributors fix issues more easily.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### 4. 🧑‍🤝‍🧑 Team Collaboration
+- Allow multiple admins per blog.
+- Define permissions (e.g., content approver, rule editor, viewer).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### 5. 🧩 Rule Templates & Suggestions
+- Offer suggested rules based on blog type (e.g., travel, tech, food).
+- One-click setup for new users.
 
-### Code Splitting
+### 6. 🕵️‍♂️ Rule Violation Auto-Learning
+- Train a custom lightweight classifier using feedback on rejected posts.
+- Use it to **pre-filter** obviously invalid posts to save API costs.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### 7. 🔔 Email & In-App Notifications
+- Notify contributors when posts are accepted, rejected, or need revision.
 
-### Analyzing the Bundle Size
+### 8. 📱 Mobile Support
+- Build a responsive or native mobile app for moderation on the go.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### 9. 🧠 Rule Conflict Detection
+- Automatically detect conflicting or overly strict rules using AI.
 
-### Making a Progressive Web App
+### 10. 🔄 Version Control for Rules
+- Track changes to rules over time.
+- Restore previous rule sets if needed.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
